@@ -1,5 +1,8 @@
 SRC = m.s
 
+lotus: c-asm.c c_and_asm.s 
+	riscv64-unknown-elf-gcc -O0 -ggdb -nostdlib -march=rv32i -mabi=ilp32 -Wl,-Tm.ld c_and_asm.s c-asm.c  -o lotus.elf
+	riscv64-unknown-elf-objcopy -O binary lotus.elf lotus.bin
 assembly: c-asm.c
 	riscv64-unknown-elf-gcc -O0 -ggdb -nostdlib -march=rv32i -mabi=ilp32 -Wl,-Tm.ld c-asm.c -S
 
