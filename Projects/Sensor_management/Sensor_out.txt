@@ -1,9 +1,12 @@
 [DEBUG] ID: 1 
 [DEBUG] Name: t 
 [DEBUG] Type: 1 
+Enter Minimum range of Temperature: 1 
+Enter Maximum range of Temperature: 1 
+Enter Readings range of Temperature: 1.000000 
 [DEBUG] ID: 2 
 [DEBUG] Name: r 
-[DEBUG] Type: 2 
-[DEBUG] ID: 0 
-[DEBUG] Name:  
-[DEBUG] Type: 7766303 
+[DEBUG] Type: 1 
+Enter Minimum range of Temperature: 1 
+Enter Maximum range of Temperature: 1 
+Enter Readings range of Temperature: 1.000000 
