@@ -14,7 +14,7 @@ int main(){
 
     // number[3] can only holds 1 byte and *int_ptr is int ( 4 bytes ) if i try to write 4 bytes of data in  1 byte of address it tries to occupy next memory byte
 
-    *int_ptr = 66;
+    *int_ptr = 66; // this 66 will be written into the number[3] but number[3] is 1 byte our 66 is 4 bytes so stack smashing 
 
     int i = 0;
     while (i < 4){
