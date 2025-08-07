@@ -22,7 +22,7 @@ int main(){
 
     printf("size of ptr: %lu \n", sizeof(name_ptr)); // usually pointer varibales of 8bytes long to store the address
     printf("size of t char: %lu \n", sizeof(*name_ptr)); // 1byte since t is char
-    printf("size of array: %lu \n", sizeof(name_array)); // NOTE: it will be 9 bytes why t h a m a r a i /0 each takes 9 bytes 
+    printf("size of array: %lu \n", sizeof(name_array)); // NOTE: it will be 9 bytes why t h a m a r a i /0 each takes 1 bytes 
 
 
     /*
@@ -45,11 +45,14 @@ int main(){
 
     int a[] = {110,11,11};
     // x = a; not POSSIBLE
-    x[0] = a[2];
-    printf("%d \n", x[0]); // this is POSSIBLE error: assignment to expression with array type
-    xptr = a; // xptr is holding the address of x[0] that is 10 and im reassiging it with a which itself has the address of a[0] that is 110
+    x[0] = a[2]; // this possible changing the values of an array
+    printf("%d \n", x[2]); // this is POSSIBLE 
+    
+    printf("%d \n", *xptr); // output will be 11 because the xptr is having the address of x[0] which is 11 after  x[0] = a[2]; so *xptr = 11
+
+    xptr = a; // xptr is holding the address of x[0] that is address of 10 and im reassiging it with `a` which itself has the address of a[0] that is 110
 
     // x = xptr; error: assignment to expression with array type
-    printf("%d \n", *xptr);
+    printf("%d \n", *xptr); // output will be 110 since a has the address of 110 so now xptr have the address pointing to 110
     
 }
