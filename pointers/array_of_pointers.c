@@ -21,6 +21,7 @@ int main(){
 
     for ( i ; i < 10; i++){
         free(p[i]); // must free the allocated memory
+        p[i] = NULL;
     }
     printf("%p \n", p);
 }
