@@ -11,6 +11,7 @@ int main(){
     printf("AFTER: %d \n", *pInteger);
 
     free(pInteger);
+    //never do double free(pInteger)
 
     *pInteger = 1; // Dangling pointer
 
