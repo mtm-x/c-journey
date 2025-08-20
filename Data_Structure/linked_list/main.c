@@ -1,12 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 //prototypes
 int init(int num);
 int add(int num);
 int traverse(void);
 int add_back(int num);
+int search(int num);
+int delete(int num);
+int delete_all_match(int num);
 
 //enum for return codes
 enum returnType {
@@ -32,10 +36,23 @@ node *__head = NULL; // initally points to null
 //main
 int main(){
 
-	init(1);
-    add(2);
-    add_back(3);
+	init(101);
+    // add(2);
+    // add_back(3);
+    // traverse();
+
+    // for ( int i = 0; i < 100000; i++) add(i); 0m0.010s ------------- O(const)
+    // for ( int i = 0; i < 100000; i++) add_back(i);  //0m12.984s ----------- O(n)
+
+    for ( int i = 0; i < 2; i++) add(i);
+    for ( int i = 0; i < 2; i++) add_back(i);
     traverse();
+    printf("101: %d \n", search(101));
+    printf("102: %d \n", search(102));
+    delete(101);
+    delete_all_match(0);
+    traverse();
+
 	return RET;
 
 }
@@ -103,7 +120,85 @@ int add_back(int num){
             return RET;
         }
     }
+
+    // at this line the current is at the last node so we can have the whole if statement outside
     
+    return RET;
+}
+
+int search(int num){
+
+    for ( node *current = __head; 
+          current != NULL; 
+          current = current->next_node)
+    {
+
+        if ( current->num == num) return true;
+        
+    }
+
+    return RET;
+}
+
+int delete(int num){
+
+    node *previous = NULL;
+    node *current = __head;
+
+    while ( current != NULL){
+
+        if ( current->num == num){
+
+            if ( __head->num == num && previous == NULL)
+            {
+                __head = current->next_node;
+                free(current);
+                return RET;
+            }
+
+            else{
+                previous->next_node = current->next_node;
+                free(current);
+                current = previous->next_node;
+                return RET;
+            }
+
+            
+        }
+        previous = current;
+        current = current->next_node;
+        
+    }
+}
+
+int delete_all_match(int num){
+    node *previous = NULL;
+    node *current = __head;
+
+    for ( node *current = __head; 
+          current != NULL;)
+
+    {
+        if ( current->num == num){
+
+            if ( previous == NULL && __head->num == num){
+                __head = current->next_node;
+                free(current);
+            }
+
+            else{
+                previous->next_node = current->next_node;
+                printf("Number %d is deleted! \n", num);
+                free(current);
+                current = previous->next_node;
+            }
+        } 
+
+        else{
+            previous = current;
+            current = previous->next_node;
+        }    
+    }
     return RET;
 }
 
