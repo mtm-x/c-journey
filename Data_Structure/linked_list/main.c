@@ -11,6 +11,7 @@ int add_back(int num);
 int search(int num);
 int delete(int num);
 int delete_all_match(int num);
+int insert(int key, int data);
 
 //enum for return codes
 enum returnType {
@@ -51,6 +52,8 @@ int main(){
     printf("102: %d \n", search(102));
     delete(101);
     delete_all_match(0);
+    traverse();
+    insert(1, 5);
     traverse();
 
 	return RET;
@@ -202,8 +205,27 @@ int delete_all_match(int num){
     return RET;
 }
 
-int traverse(void) {
+int insert(int key, int data){
+    node *previous = NULL;
+    node *current = __head;
 
+    while ( current != NULL ){
+
+        if ( current->num == key){
+            node *new_node = malloc(sizeof(node));
+            node *cpy_next = current->next_node;
+
+            current->next_node = new_node;
+            new_node->next_node = cpy_next;
+            new_node->num = data;
+        }
+        previous = current;
+        current = current->next_node;
+    }
+}
+
+int traverse(void) {
+    printf("Traversing...\n");
     for ( node *current = __head;
          current != NULL; 
          current = current->next_node) 
