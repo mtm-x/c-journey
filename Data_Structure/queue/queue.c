@@ -4,6 +4,15 @@
 #include <stdbool.h>
 #include "queue.h"
 
+
+/*
+ *Enqueue: Adds a new element to the queue.
+ *Dequeue: Removes and returns the first (front) element from the queue.
+ *Peek: Returns the first element in the queue.
+ *isEmpty: Checks if the queue is empty.
+ *Size: Finds the number of elements in the queue.
+ */
+
 typedef struct node_ {
 
 	int num;
