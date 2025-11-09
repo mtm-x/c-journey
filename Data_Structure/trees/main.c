@@ -10,4 +10,8 @@ add('D');
 add('E');
 add ('F');
 
+print_preorder();
+print_inorder();
+print_postorder();
+
 }

@@ -3,6 +3,9 @@
 
 
 void add(char data);
+void print_preorder(void);
+void print_inorder(void);
+void print_postorder(void);
 
 
 #endif

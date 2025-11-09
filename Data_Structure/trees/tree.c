@@ -100,3 +100,70 @@ void add(char dat)
             }
         }
 }
+
+void preorder(struct _node *new){
+
+        if ( new == NULL){
+                return;
+        }
+
+        printf("%c ", new->data);
+        preorder(new->left_child);
+        preorder(new->right_child);
+
+        return;
+}
+
+void print_preorder(void){
+
+        printf("Preorder:");
+        preorder(__root);
+        printf("\n");
+        return;
+}
+
+void inorder(struct _node *new){
+
+        if ( new == NULL){
+                return;
+        }
+
+        
+        inorder(new->left_child);
+        printf("%c ", new->data);
+        inorder(new->right_child);
+
+        return;
+}
+
+void print_inorder(void){
+
+        printf("Inorder:");
+        inorder(__root);
+        printf("\n");
+        return;
+}
+
+
+void postorder(struct _node *new){
+
+        if ( new == NULL){
+                return;
+        }
+
+        
+        postorder(new->left_child);
+        postorder(new->right_child);
+        printf("%c ", new->data);
+
+        return;
+}
+
+void print_postorder(void){
+
+        printf("Preorder:");
+        postorder(__root);
+        printf("\n");
+        return;
+}
+
