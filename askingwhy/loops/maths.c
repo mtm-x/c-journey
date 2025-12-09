@@ -17,11 +17,7 @@ int main (void) {
 
     for (int i = 1; i <= num; i++){
          
-        for (int j = i; j >= i ; j--){
-            fact_result *= j;
-        }
-        printf("Factorial: %d \n", fact_result);
-        
+        fact_result *= i;
         result = result + 1.0/(fact_result);
     }   
 
