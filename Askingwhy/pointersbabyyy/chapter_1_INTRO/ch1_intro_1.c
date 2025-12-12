@@ -1,4 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+int dummy(){
+    return 1;
+}
 
 int main (void) {
     char *names[] = {"Miller","Jones","Anderson"};
@@ -24,8 +29,9 @@ int main (void) {
     printf("GLobal: %d \n", a);
 
     printf("Size of *char: %ld\n",sizeof(char*));
-
-
+    int *pi = (int *) malloc(sizeof(int));
+    *pi = 5;
+    free(pi);
     
     int num = 5;
     void *pv = &num;
