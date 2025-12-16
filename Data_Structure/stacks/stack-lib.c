@@ -27,12 +27,18 @@ typedef struct  node_
 static node *__head_p = NULL;
 static node *__tail_p = NULL;
 
+void safe_copy_name (char *dest,char *src) {
+    strncpy(dest, src, 49);
+    dest[49]='\0';
+}
+
 
 void init(char *name){
+    
     __head_p = malloc(sizeof(node));
     __head_p->next_node_p = NULL;
     __head_p->prev_node_p = NULL;
-    memcpy(__head_p->name, name, sizeof(name));
+    safe_copy_name(__head_p->name, name);
     __tail_p = __head_p;
 
 }
@@ -43,14 +49,17 @@ void push(char *name){
     next_p->prev_node_p = __tail_p; // here the main code for doubly linkedlist
     __tail_p->next_node_p = next_p;
     next_p->next_node_p = NULL;
-    memcpy(next_p->name, name, sizeof(name));
+    safe_copy_name(next_p->name, name);
     __tail_p = next_p;
 
     
 }
 
 void pop(){
-
+    if ( __tail_p == NULL){
+        printf("TAIL itself NULL nothing to pop");
+        return -1;
+    }
     //tail should pop out first
     node *to_delete_p = __tail_p;
     __tail_p = __tail_p->prev_node_p;
@@ -61,6 +70,10 @@ void pop(){
 }
 
 void peek(void){
+    if ( __tail_p == NULL){
+        printf("TAIL itself NULL nothing to peep");
+        return -1;
+    }
 
     printf("PEEK: %s \n", __tail_p->name);
 }

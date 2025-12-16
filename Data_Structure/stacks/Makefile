@@ -1,3 +1,3 @@
 compile:
-	gcc main.c static-lib.c -o stack
+	gcc main.c stack-lib.c -o stack
 	./stack

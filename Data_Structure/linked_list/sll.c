@@ -44,7 +44,7 @@ int add(int num){
 
     node *next_ = malloc(sizeof(node)); // creates a struct node somewhere and returns the addr 
 
-    if (__head == NULL){
+    if (next_ == NULL){
         printf("Cannot allocate memory");
         return -ENOMEM;
     }
@@ -161,7 +161,6 @@ int delete_all_match(int num){
 }
 
 int insert(int key, int data){
-    node *previous = NULL;
     node *current = __head;
 
     while ( current != NULL ){
@@ -174,7 +173,6 @@ int insert(int key, int data){
             new_node->next_node = cpy_next;
             new_node->num = data;
         }
-        previous = current;
         current = current->next_node;
     }
 }
